@@ -8,6 +8,7 @@ import numpy as np
 from datetime import datetime
 import nltk
 import tensorflow as tf
+from tensorflow import keras
 from transformers import BertTokenizer, TFBertForSequenceClassification
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
