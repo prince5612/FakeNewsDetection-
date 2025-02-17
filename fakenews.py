@@ -14,7 +14,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 from urllib.parse import urlparse
 import pymongo
 import urllib.parse
-
+from dotenv import load_dotenv
+load_dotenv()
 
 # Download necessary NLTK resources
 nltk.download('punkt')
@@ -25,8 +26,8 @@ nltk.download('stopwords')
 # MongoDB Atlas Setup for Feedback
 # ------------------------------
 
-username = "fakenews456781"
-password = "FakeNews@5612"  # Contains special characters, e.g., '@'
+username = os.getenv('MONGO_USER')
+password = os.getenv('MONGO_PASSWORD')
 # URL-encode username and password
 username_esc = urllib.parse.quote_plus(username)
 password_esc = urllib.parse.quote_plus(password)
@@ -174,8 +175,8 @@ TRUSTED_NEWS_SOURCES = [
     'business-standard.com'
 ]
 
-GOOGLE_API_KEY = 'AIzaSyC5X1m-uK10z3wQiToPESm5CmK1M5Y05fM'
-SEARCH_ENGINE_ID = '32612217197b248b6'
+GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
+SEARCH_ENGINE_ID = os.getenv('SEARCH_ENGINE_ID')
 
 def fetch_trusted_news(query):
     site_filter = " OR ".join([f"site:{site}" for site in TRUSTED_NEWS_SOURCES])
